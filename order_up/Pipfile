@@ -12,6 +12,7 @@ wtforms = "*"
 flask-wtf = "*"
 flask-login = "*"
 werkzeug = "==2.3"
+python--dotenv = "*"
 
 [dev-packages]
 pylint = "*"
