@@ -18,7 +18,20 @@ class Employee(db.Model, UserMixin):
 
     @password.setter
     def password(self, password):
-        self.hashed_password = generate_password_hash(password)
+        self.hashed_password = generate_password_hash(password, method="pbkdf2")
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+class Menu(db.Model):
+    __tablename__ = "menus"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False)
+
+class MenuItem(db.Model):
+    __tablename__ = "menu_items"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    menu_id = db.Column(db.Integer, nullable=False )
+    menu_type_id = db.Column(db.Integer, nullable=False)
